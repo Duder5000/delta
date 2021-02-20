@@ -1,4 +1,5 @@
 // a2.cpp
+// Github repo: https://github.com/Duder5000/delta.git
 
 /////////////////////////////////////////////////////////////////////////
 //
@@ -239,24 +240,48 @@ class str_vec {
 
 
 //~~~Functions for #12~~~
+bool operator==(str_vec& a, str_vec& b){
+	if(a.getSize() != b.getSize()){
+		//if the size is different they cannot be the same so return false
+		return false;
+	}else{
+		a.sort();
+		b.sort();
+		for(int i = 0; i < a.getSize(); i++){
+			if(a.get(i) != b.get(i)){
+				return false;
+			}			
+		}
+	}
+	return true;
+}
+
+bool operator!=(str_vec& a, str_vec& b){
+	return !(a == b);
+}
+
 
 //~~~Test Functions~~~
 void test01(){
+	cout << "Starting test01 \n";
 	str_vec alfa;
   	alfa.get(99);
   	alfa.get(-1);
 }
 
 void test02(){
+	cout << "Starting test02 \n";
 	str_vec charlie(5, "cat");
   	cout << charlie.get(3) << "\n";
 }
 
 void test02Error(){
+	cout << "Starting test02 Error \n";
 	str_vec charlie(-1, "cat");
 }
 
-void test03(){
+void test03(){ 
+	cout << "Starting test03 \n";
 	str_vec delta(5, "dog");
 	str_vec echo (delta);
 	cout << echo.get(3) << "\n";
@@ -265,6 +290,7 @@ void test03(){
 // test04 --> valgrind confirms it is working
 
 void test05(){
+	cout << "Starting test05 \n";
 	str_vec foxtrot;
 	foxtrot.append("cow");
 	cout << "size = " << foxtrot.getSize() << "\n";
@@ -273,6 +299,7 @@ void test05(){
 }
 
 void test06(){
+	cout << "Starting test06 \n";
 	str_vec golf(5, "sheep");
 	cout << "to_str() = " << golf.to_str() << "\n";
 
@@ -285,6 +312,7 @@ void test06(){
 }
 
 void test07(){
+	cout << "Starting test07 \n";
 	str_vec hotel(5, "chicken");
 	cout << "Before .set(): " << hotel.get(1) << "\n";
 	hotel.set(1, "not a chicken");
@@ -292,6 +320,7 @@ void test07(){
 }
 
 void test08(){
+	cout << "Starting test08 \n";
 	str_vec india(5, "pig");
 	india.append("lama");
 	india.prepend("alpaca");
@@ -299,6 +328,7 @@ void test08(){
 }
 
 void test09(){
+	cout << "Starting test09 \n";
 	str_vec juliett(5, "cat");
 	juliett.set(1, "dog");
   	juliett.append("fish");
@@ -311,6 +341,7 @@ void test09(){
 }
 
 void test10(){
+	cout << "Starting test10 \n";
 	str_vec lima(5, "cat");
 	lima.set(1, "dog");
   	lima.append("fish");
@@ -324,6 +355,7 @@ void test10(){
 }
 
 void test11(){
+	cout << "Starting test11 \n";
 	str_vec mike(5, "cat");
 
 	mike.clear();
@@ -334,7 +366,21 @@ void test11(){
 }
 
 void test12(){
+	cout << "Starting test12 \n";
+	str_vec november(5, "cat");
+	str_vec oscar(5, "cat");
+	str_vec papa(4, "dog");
+	str_vec quebec(5, "dog");
 
+	cout << "== section \n";
+	cout << "november == oscar boolen value: " << (november == oscar) << "\n";
+	cout << "november == papa boolen value: " << (november == papa) << "\n";
+	cout << "november == quebec boolen value: " << (november == quebec) << "\n";
+
+	cout << "!= section \n";
+	cout << "november != oscar boolen value: " << (november != oscar) << "\n";
+	cout << "november != papa boolen value: " << (november != papa) << "\n";
+	cout << "november != quebec boolen value: " << (november != quebec) << "\n";
 }
 
 int main() {
@@ -343,7 +389,7 @@ int main() {
   test02();
   // test02Error();
   test03();
-  // test04 --> valgrind confirms it is working
+  cout << "Starting test04 \nvalgrind confirms it is working\n";
   test05();
   test06();
   test07();
@@ -351,7 +397,7 @@ int main() {
   test09();
   test10();
   test11();
-  // test12();
+  test12();
 
   
   str_vec bravo(5, "cat");
