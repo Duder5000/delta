@@ -324,6 +324,16 @@ void test10(){
 }
 
 void test11(){
+	str_vec mike(5, "cat");
+
+	mike.clear();
+	cout << "size = " << mike.getSize() << ", cap = " << mike.getCap() << "\n";
+
+	mike.squish();
+	cout << "size = " << mike.getSize() << ", cap = " << mike.getCap() << "\n";
+}
+
+void test12(){
 
 }
 
@@ -340,10 +350,8 @@ int main() {
   test08();
   test09();
   test10();
-  // test11();
-
-
-
+  test11();
+  // test12();
 
   
   str_vec bravo(5, "cat");
