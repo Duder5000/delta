@@ -145,7 +145,7 @@ class str_vec {
 				cap = 2 * cap;
 				std::string * new_arr = new std::string[cap];
 
-				for(int i = 0; i < size; ++i){
+				for(int i = 0; i < size; i++){
 					new_arr[i] = arr[i];
 				}
 
@@ -169,7 +169,7 @@ class str_vec {
 			std::string * prepend_arr = new std::string[cap];
 
 			prepend_arr[0] = s;
-			for(int i = 1; i < size; ++i){
+			for(int i = 1; i < size; i++){
 				prepend_arr[i] = arr[i];
 			}
 
@@ -179,23 +179,34 @@ class str_vec {
 
 		//~~~append(other) for #9~~~
 		void append(str_vec& other){
-			//increase capacity if the 2 sizes are larger then the current
-			// if(cap < size + other.getSize()){
-			// 	cap = cap + other.getSize();
-			// }
-	
-			cout << "other's  size = " << other.getSize() << "\n";
 			for (int i = 0; i < other.getSize(); i++){
 				std::string tmp = other.get(i);
 				append(tmp);
 			}
 		}
 
+		//~~~reverse for #10~~~
+		void reverse(){
+			std::string * reverse_arr = new std::string[cap];
+
+			int j = 0;
+			for(int i = size-1; i >= 0; i--){
+				reverse_arr[j] = arr[i];
+				j++;
+			}
+			delete[] arr; 
+			arr = reverse_arr; 			
+		}
+
+		//~~~sort for #10~~~
+		void sort(){
+			std::sort(arr, arr + size);
+		}
+
 	private:		
 		int size;
 		int cap;
 		std::string * arr;
-
 }; 
 
 
@@ -230,6 +241,12 @@ int main() {
 
   str_vec echo(5, "qqq");
   bravo.append(echo);
+  bravo.println();
+
+  bravo.reverse();  
+  bravo.println();
+
+  bravo.sort();  
   bravo.println();
 
 }
