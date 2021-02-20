@@ -284,6 +284,49 @@ void test06(){
 	golf.println();
 }
 
+void test07(){
+	str_vec hotel(5, "chicken");
+	cout << "Before .set(): " << hotel.get(1) << "\n";
+	hotel.set(1, "not a chicken");
+	cout << "After .set(): " << hotel.get(1) << "\n";
+}
+
+void test08(){
+	str_vec india(5, "pig");
+	india.append("lama");
+	india.prepend("alpaca");
+	india.println();
+}
+
+void test09(){
+	str_vec juliett(5, "cat");
+	juliett.set(1, "dog");
+  	juliett.append("fish");
+  	juliett.prepend("rabbit");
+	
+	str_vec kilo(5, "qqq");
+  	juliett.append(kilo);
+
+  	juliett.println();
+}
+
+void test10(){
+	str_vec lima(5, "cat");
+	lima.set(1, "dog");
+  	lima.append("fish");
+  	lima.prepend("rabbit");
+
+  	lima.reverse();
+  	lima.println();
+
+  	lima.sort();
+  	lima.println();
+}
+
+void test11(){
+
+}
+
 int main() {
   cout << "~~~Assignment 02~~~\n";
   test01();
@@ -293,6 +336,15 @@ int main() {
   // test04 --> valgrind confirms it is working
   test05();
   test06();
+  test07();
+  test08();
+  test09();
+  test10();
+  // test11();
+
+
+
+
   
   str_vec bravo(5, "cat");
 
@@ -307,29 +359,23 @@ int main() {
   // bravo.println();
 
   bravo.set(1, "dog");
-  // cout << "bravo.get(1) = " << bravo.get(1) << "\n";
-
   bravo.append("fish");
-  // cout << bravo.get(bravo.getSize()-1) << "\n";
-
   bravo.prepend("rabbit");
-  cout << bravo.get(0) << "\n";
-
   str_vec echo(5, "qqq");
   bravo.append(echo);
-  bravo.println();
+  // bravo.println();
 
   bravo.reverse();  
-  bravo.println();
+  // bravo.println();
 
   bravo.sort();  
-  bravo.println();
+  // bravo.println();
 
   // bravo.clear();  
   // bravo.println();
 
   bravo.squish();
-  bravo.println();
+  // bravo.println();
 
 
 
