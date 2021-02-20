@@ -398,41 +398,6 @@ int main() {
   test10();
   test11();
   test12();
-
-  
-  str_vec bravo(5, "cat");
-
-  // str_vec charlie(-1, "cat");
-
-  str_vec delta(bravo);
-  // cout << bravo.get(0) << "\n";
-  // cout << bravo.getSize() << "\n";
-  // cout << bravo.getCap() << "\n";
-  // cout << bravo.pct_used() << "\n";
-  // bravo.print();
-  // bravo.println();
-
-  bravo.set(1, "dog");
-  bravo.append("fish");
-  bravo.prepend("rabbit");
-  str_vec echo(5, "qqq");
-  bravo.append(echo);
-  // bravo.println();
-
-  bravo.reverse();  
-  // bravo.println();
-
-  bravo.sort();  
-  // bravo.println();
-
-  // bravo.clear();  
-  // bravo.println();
-
-  bravo.squish();
-  // bravo.println();
-
-
-
 }
 
 
