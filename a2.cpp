@@ -41,7 +41,7 @@ correct.
 
 class str_vec {
 	public:
-		//~~~Default Constructor~~~
+		//~~~Default Constructor for #1~~~
 		str_vec(){
 			size = 0;
 			cap = 10;
@@ -70,8 +70,12 @@ class str_vec {
 			arr = new std::string[cap];
 		}
 
-		//~~~Destructor for #4
+		//~~~Destructor for #4~~~
+		~str_vec(){
+			delete[] arr;
+		}
 
+//~~~MY MISC TEST STUFF~~~~~~~~~~~~~~~~~~~~~~~~
 		std::string getAtIndex(int i){
 			if(i > size){
 				cout << "Nothing at location \n";
@@ -87,7 +91,51 @@ class str_vec {
 		void adder(std::string x){
 			arr[size++] = x;
 		}
+//~~~MY MISC TEST STUFF~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+		//~~~Size getter for #5~~~
+		int getSize() const{
+			return size;
+		}
+
+		//~~~Cap getter for #5~~~
+		int getCap() const{
+			return cap;
+		}
+
+		//~~~pct_used for #5~~~
+		double pct_used() const{
+			// double x;
+			// x = (double)size / (double)cap;
+			// return (x);
+			return (double)size / (double)cap;
+		}
+
+		//~~~to_str for #6~~~
+		std::string to_str() const{
+			std::string result = "[";
+			for(int i=0; i<size; i++){
+				result += "\"" + arr[i];
+				if(i == size-1){
+					result += "\"";
+				}else{
+					result += "\", ";
+				}
+			}
+			result += "]";
+			return result;
+		}
+
+		//~~~print for #6~~~
+		void print() const{
+			cout << to_str();
+		}
+
+		//~~~println for #6~~~
+		void println() const{
+			cout << to_str() << "\n";
+		}
 
 	private:		
 		int size;
@@ -110,6 +158,11 @@ int main() {
 
   str_vec delta(bravo);
   cout << bravo.getAtIndex(0) << "\n";
+  cout << bravo.getSize() << "\n";
+  cout << bravo.getCap() << "\n";
+  cout << bravo.pct_used() << "\n";
+  bravo.print();
+  bravo.println();
 
 }
 
@@ -188,4 +241,4 @@ int main() {
 
 
 
-//~~~
+//Making extra scroll space - to delete
