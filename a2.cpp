@@ -68,6 +68,11 @@ class str_vec {
 			size = sv.size;
 			cap = sv.cap;
 			arr = new std::string[cap];
+
+			//copy data
+			for(int i = 0; i < sv.size; i++){
+				arr[i] = sv.get(i);
+			}
 		}
 
 		//~~~Destructor for #4~~~
@@ -224,6 +229,8 @@ class str_vec {
 			cap = size;
 		}
 
+		//~~~
+
 	private:		
 		int size;
 		int cap;
@@ -231,15 +238,63 @@ class str_vec {
 }; 
 
 
+//~~~Functions for #12~~~
+
+//~~~Test Functions~~~
+void test01(){
+	str_vec alfa;
+  	alfa.get(99);
+  	alfa.get(-1);
+}
+
+void test02(){
+	str_vec charlie(5, "cat");
+  	cout << charlie.get(3) << "\n";
+}
+
+void test02Error(){
+	str_vec charlie(-1, "cat");
+}
+
+void test03(){
+	str_vec delta(5, "dog");
+	str_vec echo (delta);
+	cout << echo.get(3) << "\n";
+}
+
+// test04 --> valgrind confirms it is working
+
+void test05(){
+	str_vec foxtrot;
+	foxtrot.append("cow");
+	cout << "size = " << foxtrot.getSize() << "\n";
+	cout << "capacity = " << foxtrot.getCap() << "\n";
+	cout << "pct_used = " << foxtrot.pct_used() << "\n";
+}
+
+void test06(){
+	str_vec golf(5, "sheep");
+	cout << "to_str() = " << golf.to_str() << "\n";
+
+	cout << "print = ";
+	golf.print(); 
+	cout << "\n";
+
+	cout << "println = ";
+	golf.println();
+}
+
 int main() {
   cout << "~~~Assignment 02~~~\n";
+  test01();
+  test02();
+  // test02Error();
+  test03();
+  // test04 --> valgrind confirms it is working
+  test05();
+  test06();
   
-  str_vec alfa;
-  alfa.get(99);
-  alfa.get(-1);
-
   str_vec bravo(5, "cat");
-  // cout << bravo.get(0) << "\n";
 
   // str_vec charlie(-1, "cat");
 
@@ -275,6 +330,9 @@ int main() {
 
   bravo.squish();
   bravo.println();
+
+
+
 }
 
 
