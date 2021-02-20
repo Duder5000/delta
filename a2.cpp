@@ -194,6 +194,7 @@ class str_vec {
 				reverse_arr[j] = arr[i];
 				j++;
 			}
+
 			delete[] arr; 
 			arr = reverse_arr; 			
 		}
@@ -201,6 +202,26 @@ class str_vec {
 		//~~~sort for #10~~~
 		void sort(){
 			std::sort(arr, arr + size);
+		}
+
+		//~~~clear for #11~~~
+		void clear(){
+			delete[] arr; 
+			size = 0;
+			arr = new std::string[cap];
+		}
+
+		//~~~squish for #11~~~
+		void squish(){
+			std::string * squish_arr = new std::string[size];
+
+			for(int i = 0; i < size; i++){
+				squish_arr[i] = arr[i];
+			}
+
+			delete[] arr; 
+			arr = squish_arr; 
+			cap = size;
 		}
 
 	private:		
@@ -249,6 +270,11 @@ int main() {
   bravo.sort();  
   bravo.println();
 
+  // bravo.clear();  
+  // bravo.println();
+
+  bravo.squish();
+  bravo.println();
 }
 
 
