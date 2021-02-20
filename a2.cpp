@@ -25,6 +25,7 @@
 //
 // These are the only permitted includes: don't include anything else.
 //
+
 #include "cmpt_error.h"
 #include <iostream>
 #include <string>
@@ -33,15 +34,158 @@
 
 using namespace std;
 
+/*
+Write a test function for *each* major method/function to ensure it is
+correct.
+*/
+
 class str_vec {
+	public:
+		//~~~Default Constructor~~~
+		str_vec(){
+			size = 0;
+			cap = 10;
+			arr = new std::string[cap];
+		}
 
-    // ...
+		//~~~Constructor for #2~~~
+		str_vec(int n, std::string s){
+			if(n < 0){
+				cmpt::error("In str_vec --> constructor for #2 --> error n < 0");
+			}else{
+				size = n;
+				cap = n;
+				arr = new std::string[cap];
+				arr[1] = s;
+				for(int i = 0; i < cap; i++){
+					arr[i] = s;
+				}
+			}
+		}
 
-}; // class str_vec
+		//~~~Constructor for #3~~~
+		str_vec(str_vec& sv){
+			size = sv.size;
+			cap = sv.cap;
+			arr = new std::string[cap];
+		}
+
+		//~~~Destructor for #4
+
+		std::string getAtIndex(int i){
+			if(i > size){
+				cout << "Nothing at location \n";
+			}
+			return arr[i];
+		}
+
+		void setAtIndex(std::string x, int i){
+			arr[i] = x;
+		}
+
+
+		void adder(std::string x){
+			arr[size++] = x;
+		}
+
+
+	private:		
+		int size;
+		int cap;
+		std::string * arr;
+
+}; 
 
 
 int main() {
   cout << "~~~Assignment 02~~~\n";
+  
+  str_vec alfa;
+  alfa.getAtIndex(99);
 
+  str_vec bravo(5, "cat");
+  cout << bravo.getAtIndex(0) << "\n";
+
+  // str_vec charlie(-1, "cat");
+
+  str_vec delta(bravo);
+  cout << bravo.getAtIndex(0) << "\n";
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//~~~
