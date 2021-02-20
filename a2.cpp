@@ -75,24 +75,6 @@ class str_vec {
 			delete[] arr;
 		}
 
-//~~~MY MISC TEST STUFF~~~~~~~~~~~~~~~~~~~~~~~~
-		std::string getAtIndex(int i){
-			if(i > size){
-				cout << "Nothing at location \n";
-			}
-			return arr[i];
-		}
-
-		void setAtIndex(std::string x, int i){
-			arr[i] = x;
-		}
-
-
-		void adder(std::string x){
-			arr[size++] = x;
-		}
-//~~~MY MISC TEST STUFF~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 		//~~~Size getter for #5~~~
 		int getSize() const{
@@ -137,6 +119,78 @@ class str_vec {
 			cout << to_str() << "\n";
 		}
 
+		//~~~get for #7~~~
+		std::string get(int i) const{
+			if(i > size || i < 0){
+				cout << "Cannot get index " << i << ", exceeds exist \n";
+				return "error!";
+			}else{
+				return arr[i];
+			}
+		}
+
+
+		//~~~set for #7~~~
+		void set(int i, std::string s){
+			if(i > size || i < 0){
+				cout << "Cannot get index " << i << ", does not exist \n";
+			}else{
+				arr[i] = s;
+			}
+		}
+
+		//~~~Helper function for #8
+		void sizeAdjust(){
+			if(size == cap){
+				cap = 2 * cap;
+				std::string * new_arr = new std::string[cap];
+
+				for(int i = 0; i < size; ++i){
+					new_arr[i] = arr[i];
+				}
+
+				delete[] arr; 
+				arr = new_arr; 
+			}
+		}
+
+		//~~~append for #8~~~
+		void append(std::string s){
+			sizeAdjust();
+		
+			size += 1;
+			arr[size-1] = s;
+		}
+
+		//~~~prepend for #8~~~
+		void prepend(std::string s){
+			sizeAdjust();
+		
+			std::string * prepend_arr = new std::string[cap];
+
+			prepend_arr[0] = s;
+			for(int i = 1; i < size; ++i){
+				prepend_arr[i] = arr[i];
+			}
+
+			delete[] arr; 
+			arr = prepend_arr;
+		}
+
+		//~~~append(other) for #9~~~
+		void append(str_vec& other){
+			//increase capacity if the 2 sizes are larger then the current
+			// if(cap < size + other.getSize()){
+			// 	cap = cap + other.getSize();
+			// }
+	
+			cout << "other's  size = " << other.getSize() << "\n";
+			for (int i = 0; i < other.getSize(); i++){
+				std::string tmp = other.get(i);
+				append(tmp);
+			}
+		}
+
 	private:		
 		int size;
 		int cap;
@@ -149,19 +203,33 @@ int main() {
   cout << "~~~Assignment 02~~~\n";
   
   str_vec alfa;
-  alfa.getAtIndex(99);
+  alfa.get(99);
+  alfa.get(-1);
 
   str_vec bravo(5, "cat");
-  cout << bravo.getAtIndex(0) << "\n";
+  // cout << bravo.get(0) << "\n";
 
   // str_vec charlie(-1, "cat");
 
   str_vec delta(bravo);
-  cout << bravo.getAtIndex(0) << "\n";
-  cout << bravo.getSize() << "\n";
-  cout << bravo.getCap() << "\n";
-  cout << bravo.pct_used() << "\n";
-  bravo.print();
+  // cout << bravo.get(0) << "\n";
+  // cout << bravo.getSize() << "\n";
+  // cout << bravo.getCap() << "\n";
+  // cout << bravo.pct_used() << "\n";
+  // bravo.print();
+  // bravo.println();
+
+  bravo.set(1, "dog");
+  // cout << "bravo.get(1) = " << bravo.get(1) << "\n";
+
+  bravo.append("fish");
+  // cout << bravo.get(bravo.getSize()-1) << "\n";
+
+  bravo.prepend("rabbit");
+  cout << bravo.get(0) << "\n";
+
+  str_vec echo(5, "qqq");
+  bravo.append(echo);
   bravo.println();
 
 }
@@ -173,72 +241,3 @@ int main() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Making extra scroll space - to delete
